@@ -140,6 +140,16 @@ public class RedisUtil {
         return redisTemplate.opsForValue().increment(key, number);
     }
 
+    /**
+     * 删除字符串
+     *
+     * @param key 关键
+     * @return {@link Boolean}
+     */
+    public Boolean deleteString(String key){
+        return redisTemplate.delete(key);
+    }
+
     //- - - - - - - - - - - - - - - - - - - - -  set类型 - - - - - - - - - - - - - - - - - - - -
 
     /**
