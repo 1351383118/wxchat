@@ -32,6 +32,15 @@ spring:
     # 连接超时时间（毫秒）
     timeout: 10000
     password: 自己的password
+    datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: 数据库地址
+      username: 用户名
+      password: 密码
+      type: com.alibaba.druid.pool.DruidDataSource
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
 logging:
   level:
     com.zjh.wxchat: trace

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zjh.wxchat._mapper.TangPoetryMapper">
+    
+    <!--批量新增所有列-->
+    <insert id="insertBatch" keyProperty="id">
+        insert into tang_poetry
+        (id,author,title,contents,prologue)
+        values
+        <foreach collection="tangPoetryList" item="tangPoetry" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <choose>
+                    <when test="#{tangPoetry.id} != null  and #{tangPoetry.id} != ''">
+                        #{tangPoetry.id},
+                    </when>
+                    <otherwise>
+                        null,
+                    </otherwise>
+                </choose>
+                <choose>
+                    <when test="#{tangPoetry.author} != null  and #{tangPoetry.author} != ''">
+                        #{tangPoetry.author},
+                    </when>
+                    <otherwise>
+                        null,
+                    </otherwise>
+                </choose>
+                <choose>
+                    <when test="#{tangPoetry.title} != null  and #{tangPoetry.title} != ''">
+                        #{tangPoetry.title},
+                    </when>
+                    <otherwise>
+                        null,
+                    </otherwise>
+                </choose>
+                <choose>
+                    <when test="#{tangPoetry.contents} != null  and #{tangPoetry.contents} != ''">
+                        #{tangPoetry.contents},
+                    </when>
+                    <otherwise>
+                        null,
+                    </otherwise>
+                </choose>
+                <choose>
+                    <when test="#{tangPoetry.prologue} != null  and #{tangPoetry.prologue} != ''">
+                        #{tangPoetry.prologue},
+                    </when>
+                    <otherwise>
+                        null,
+                    </otherwise>
+                </choose>
+            </trim>
+        </foreach>
+    </insert>
+
+</mapper>
+
